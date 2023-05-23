@@ -30,9 +30,10 @@ local toolbar = plugin:CreateToolbar("EasyPlugin1") -- Section Name
 local openButton =
 	toolbar:CreateButton(tostring(math.random()), "FastPluginMaker.", "rbxasset://13514510123", "PluginCreator") -- btnID, btnDescription, btnIcon, btnName
 openButton.Click:Connect(function()
-	if openButton.Enabled == true then
+	local open = false
+	if open == true then
 		pluginWidget.Enabled = false
-	elseif openButton.Enabled == false then
+	elseif open == false then
 		pluginWidget.Enabled = true
 	end
 end)

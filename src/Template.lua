@@ -28,9 +28,10 @@ guiObject.Parent = pluginWidget
 
 -- Button
 openButton.Click:Connect(function()
-	if openButton.Enabled == true then
+	local open = false
+	if open == true then
 		pluginWidget.Enabled = false
-	elseif openButton.Enabled == false then
+	elseif open == false then
 		pluginWidget.Enabled = true
 	end
 end)
