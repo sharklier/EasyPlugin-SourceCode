@@ -1,0 +1,138 @@
+-- May 21th, 2023, Sharklier. 
+--EasyPlugin Roblox ©
+-- Dont Steal or I DMCA 
+-- Dont make fun of the speghetti
+-- Services
+local SS = game:GetService("ServerStorage")
+local Selection = game:GetService("Selection")
+
+-- Widget
+local UX = script.Parent.EasyPlugin.Back:Clone()
+local TB = plugin:CreateToolbar("EasyPlugin1") -- Section Name
+local Openbtn = TB:CreateButton("Openbtn1", "FastPluginMaker.", "http://www.roblox.com/asset/?id=13514510123", "PluginCreator") -- btnID, btnDescription, btnIcon, btnName
+local open = false
+local widgetInfo = DockWidgetPluginGuiInfo.new(
+	Enum.InitialDockState.Float, -- Widget will be initialized in floating panel
+	false, -- Widget will be initially enabled
+	false, -- Don't override the previous enabled state
+	350, -- Default width of the floating window
+	350, -- Default height of the floating window
+	350, -- Minimum width of the floating window (optional)
+	350 -- Minimum height of the floating window (optional)
+)
+local PluginWidget = plugin:CreateDockWidgetPluginGui("PluginUI",widgetInfo)
+
+-- Button Vars
+local btnCreate = UX.Create
+--InfoBoxes
+local Name = UX.NameBox
+local Description = UX.DescriptionBox
+local IconID = UX.IconIDBox
+local MinHeight = UX.MinimumHeightBox
+local MinWidth = UX.MinimumWidthBox
+-- Style
+PluginWidget.Title = "EasyPlugin"
+UX.Parent = PluginWidget
+
+Openbtn.Click:Connect(function()
+	if open == true then
+		open = false
+		PluginWidget.Enabled = false
+	else
+		open = true
+		PluginWidget.Enabled = true
+	end
+end)
+-- functions
+
+local function Create()
+	
+	
+	local home = Instance.new("Folder")
+	home.Name = Name.Text
+	home.Parent = SS
+	
+	
+	-- HandlerScript
+	local Handler =script.Parent.Template:Clone()
+	Handler.Parent = home
+	Handler.Name = Name.Text.."Handler"
+	Handler.Enabled = true
+	
+	-- Cloning UI
+	local selected = Selection:Get()[1]:Clone()
+	selected.Parent = home
+	selected.Name = Name.Text.."UI"
+	
+	-- Description Transport
+	local Des = Instance.new("StringValue")
+	Des.Name = "Des"
+	Des.Value = Description.Text
+	Des.Parent = home
+	
+	-- Name Transport
+	local nam = Instance.new("StringValue")
+	nam.Name = "nam"
+	nam.Value = Name.Text
+	nam.Parent = home
+	
+	-- Icon transport
+	local Ico = Instance.new("IntValue")
+	Ico.Name = "Ico"
+	Ico.Value = tonumber(IconID.Text)
+	Ico.Parent = home
+	-- Minimum Width Transport
+	local WMin = Instance.new("IntValue")
+	WMin.Name = "WMin"
+	WMin.Value = tonumber(MinWidth.Text)
+	WMin.Parent = home
+	-- Minimum Height Transport
+	local HMin = Instance.new("IntValue")
+	HMin.Name = "HMin"
+	HMin.Value = tonumber(MinHeight.Text)
+	HMin.Parent = home
+	-- FixesUI Problem
+	open = false
+	PluginWidget.Enabled = false
+	wait(1)
+	UX.Parent = PluginWidget
+end
+
+-- FunctionsEnd
+
+
+btnCreate.MouseButton1Click:Connect(Create)
+
+
+
+
+--[[
+speghetti:
+
+
+                                                                                                                                                                       
+                                                                                                                                                                       
+   SSSSSSSSSSSSSSS                                                           hhhhhhh                                          tttt               tttt            iiii  
+ SS:::::::::::::::S                                                          h:::::h                                       ttt:::t            ttt:::t           i::::i 
+S:::::SSSSSS::::::S                                                          h:::::h                                       t:::::t            t:::::t            iiii  
+S:::::S     SSSSSSS                                                          h:::::h                                       t:::::t            t:::::t                  
+S:::::S           ppppp   ppppppppp       eeeeeeeeeeee       ggggggggg   gggggh::::h hhhhh           eeeeeeeeeeee    ttttttt:::::tttttttttttttt:::::ttttttt    iiiiiii 
+S:::::S           p::::ppp:::::::::p    ee::::::::::::ee    g:::::::::ggg::::gh::::hh:::::hhh      ee::::::::::::ee  t:::::::::::::::::tt:::::::::::::::::t    i:::::i 
+ S::::SSSS        p:::::::::::::::::p  e::::::eeeee:::::ee g:::::::::::::::::gh::::::::::::::hh   e::::::eeeee:::::eet:::::::::::::::::tt:::::::::::::::::t     i::::i 
+  SS::::::SSSSS   pp::::::ppppp::::::pe::::::e     e:::::eg::::::ggggg::::::ggh:::::::hhh::::::h e::::::e     e:::::etttttt:::::::tttttttttttt:::::::tttttt     i::::i 
+    SSS::::::::SS  p:::::p     p:::::pe:::::::eeeee::::::eg:::::g     g:::::g h::::::h   h::::::he:::::::eeeee::::::e      t:::::t            t:::::t           i::::i 
+       SSSSSS::::S p:::::p     p:::::pe:::::::::::::::::e g:::::g     g:::::g h:::::h     h:::::he:::::::::::::::::e       t:::::t            t:::::t           i::::i 
+            S:::::Sp:::::p     p:::::pe::::::eeeeeeeeeee  g:::::g     g:::::g h:::::h     h:::::he::::::eeeeeeeeeee        t:::::t            t:::::t           i::::i 
+            S:::::Sp:::::p    p::::::pe:::::::e           g::::::g    g:::::g h:::::h     h:::::he:::::::e                 t:::::t    tttttt  t:::::t    tttttt i::::i 
+SSSSSSS     S:::::Sp:::::ppppp:::::::pe::::::::e          g:::::::ggggg:::::g h:::::h     h:::::he::::::::e                t::::::tttt:::::t  t::::::tttt:::::ti::::::i
+S::::::SSSSSS:::::Sp::::::::::::::::p  e::::::::eeeeeeee   g::::::::::::::::g h:::::h     h:::::h e::::::::eeeeeeee        tt::::::::::::::t  tt::::::::::::::ti::::::i
+S:::::::::::::::SS p::::::::::::::pp    ee:::::::::::::e    gg::::::::::::::g h:::::h     h:::::h  ee:::::::::::::e          tt:::::::::::tt    tt:::::::::::tti::::::i
+ SSSSSSSSSSSSSSS   p::::::pppppppp        eeeeeeeeeeeeee      gggggggg::::::g hhhhhhh     hhhhhhh    eeeeeeeeeeeeee            ttttttttttt        ttttttttttt  iiiiiiii
+                   p:::::p                                            g:::::g                                                                                          
+                   p:::::p                                gggggg      g:::::g                                                                                          
+                  p:::::::p                               g:::::gg   gg:::::g                                                                                          
+                  p:::::::p                                g::::::ggg:::::::g                                                                                          
+                  p:::::::p                                 gg:::::::::::::g                                                                                           
+                  ppppppppp                                   ggg::::::ggg                                                                                             
+                                                                 gggggg                                                                                                
+]]--
