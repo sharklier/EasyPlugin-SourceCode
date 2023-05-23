@@ -1,0 +1,32 @@
+-- Thanks for using EasyPlugin!
+-- Widget
+local UI = script.Parent:WaitForChild(script.Parent.nam.Value.."UI")
+local TB = plugin:CreateToolbar(script.Parent.nam.Value) -- Section Name
+local Openbtn = TB:CreateButton("18584", script.Parent.Des.Value, "http://www.roblox.com/asset/?id="..script.Parent.Ico.Value, script.Parent.nam.Value) -- btnID, btnDescription, btnIcon, btnName
+local open = false
+local widgetInfo = DockWidgetPluginGuiInfo.new(
+	Enum.InitialDockState.Float, -- Widget will be initialized in floating panel
+	false, -- Widget will be initially enabled
+	false, -- Don't override the previous enabled state
+	350, -- Default width of the floating window
+	350, -- Default height of the floating window
+	script.Parent:WaitForChild("WMin").Value, -- Minimum width of the floating window (optional)
+	script.Parent:WaitForChild("HMin").Value -- Minimum height of the floating window (optional)
+)
+local PluginWidget = plugin:CreateDockWidgetPluginGui("PluginUI",widgetInfo)
+
+
+-- Style
+PluginWidget.Title =	script.Parent.nam.Value
+UI.Parent = PluginWidget
+
+Openbtn.Click:Connect(function()
+	if open == true then
+		open = false
+		PluginWidget.Enabled = false
+	else
+		open = true
+		PluginWidget.Enabled = true
+	end
+end)
+-- IT WORKS!!!!!!!!!!!!
