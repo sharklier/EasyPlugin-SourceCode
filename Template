@@ -1,5 +1,5 @@
 -- Thanks for using EasyPlugin!
--- Widget
+-- Widget 
 local UI = script.Parent:WaitForChild(script.Parent.nam.Value.."UI")
 local TB = plugin:CreateToolbar(script.Parent.nam.Value) -- Section Name
 local Openbtn = TB:CreateButton("18584", script.Parent.Des.Value, "http://www.roblox.com/asset/?id="..script.Parent.Ico.Value, script.Parent.nam.Value) -- btnID, btnDescription, btnIcon, btnName
