@@ -1,4 +1,3 @@
-
 --[[
 	Sharklier
 	May 22th, 2023
@@ -10,7 +9,6 @@ local ServerStorage = game:GetService("ServerStorage")
 local Selection = game:GetService("Selection")
 
 -- Widget
-
 local widgetInfo = DockWidgetPluginGuiInfo.new(
 	Enum.InitialDockState.Float, -- Widget will be initialized in floating panel
 	false, -- Widget will be initially enabled
@@ -24,32 +22,29 @@ local pluginWidget = plugin:CreateDockWidgetPluginGui("PluginUI", widgetInfo)
 pluginWidget.Title = "EasyPlugin"
 
 -- Gui
-local pluginGui = script.Parent:WaitForChild("EasyPlugin"):Clone()
+local pluginGui = script.Parent:WaitForChild("EasyPlugin").Back:Clone()
 pluginGui.Parent = pluginWidget
 
 -- Toolbar & Button
-local isOpen = false
 local toolbar = plugin:CreateToolbar("EasyPlugin1") -- Section Name
 local openButton =
-	toolbar:CreateButton(tostring(math.random()), "FastPluginMaker.", "http://www.roblox.com/asset/?id=13514510123", "PluginCreator") -- btnID, btnDescription, btnIcon, btnName
-
+	toolbar:CreateButton(tostring(math.random()), "FastPluginMaker.", "rbxasset://13514510123", "PluginCreator") -- btnID, btnDescription, btnIcon, btnName
 openButton.Click:Connect(function()
-	if isOpen then
-		isOpen = false
+	local open = false
+	if open == true then
 		pluginWidget.Enabled = false
-	elseif not isOpen then
-		isOpen = true
+	elseif open == false then
 		pluginWidget.Enabled = true
 	end
 end)
 
 -- Initalization
 local function Create()
-	local Name = pluginGui.Back.NameBox
-	local Description = pluginGui.Back.DescriptionBox
-	local IconID = pluginGui.Back.IconIDBox
-	local MinHeight = pluginGui.Back.MinimumHeightBox
-	local MinWidth = pluginGui.Back.MinimumWidthBox
+	local Name = pluginGui.NameBox
+	local Description = pluginGui.DescriptionBox
+	local IconID = pluginGui.IconIDBox
+	local MinHeight = pluginGui.MinimumHeightBox
+	local MinWidth = pluginGui.MinimumWidthBox
 
 	-- Root
 	local home = Instance.new("Folder")
@@ -103,6 +98,4 @@ local function Create()
 	pluginGui.Parent = pluginWidget
 end
 
-pluginGui.Back.Create.MouseButton1Click:Connect(Create)
-
-
+pluginGui.Create.MouseButton1Click:Connect(Create)
